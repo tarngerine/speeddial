@@ -5,7 +5,7 @@ __lua__
 function _init()
   player={
     sp=1,
-    x=1024,
+    x=10,
     y=10,
     w=8,
     h=8,
@@ -153,10 +153,19 @@ function get_item(obj)
   end
 end
 
+function fall_off()
+  if player.y > 128 then
+    player.y=10
+    player.x=10
+  end
+end
+
 -->8
 --player
 
 function player_update()
+  fall_off()
+
   --physics
   player.dy+=gravity
   player.dx*=friction
